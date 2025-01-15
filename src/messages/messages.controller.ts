@@ -11,13 +11,7 @@ import { MessagesService } from './messages.service';
 
 @Controller('messages')
 export class MessagesController {
-  messagesService: MessagesService;
-
-  constructor() {
-    //Don't do this is in real life
-    //Use dependency injeciton instead
-    this.messagesService = new MessagesService();
-  }
+  constructor(public messagesService: MessagesService) {}
 
   @Get()
   listMessages(): Promise<{ id: string; content: string }[]> {
